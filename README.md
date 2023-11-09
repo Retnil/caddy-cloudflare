@@ -14,7 +14,7 @@ Use:
       -e CLOUDFLARE_EMAIL=me@example.com \
       -e CLOUDFLARE_API_TOKEN=12345 \
       -e ACME_AGREE=true \
-      ghcr.io/retnil/caddy-cloudflaredns:latest
+      ghcr.io/retnil/caddy-cloudflare:latest
     ```
 
     You can obtain your [Cloudflare API token](https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys) via the Cloudflare Portal. To create a API token with minimal scope, the following steps are needed:
