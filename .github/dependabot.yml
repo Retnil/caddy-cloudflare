@@ -5,17 +5,15 @@
 
 version: 2
 updates:
-  # Maintain dependencies for GitHub Actions
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    assignees:
-      - "Retnil"
-  # Check for docker image updates
-  - package-ecosystem: "docker"
-    directory: "/"
-    schedule:
-      interval: "daily"
-    assignees:
-      - "Retnil"
+    # Maintain dependencies for GitHub Actions
+    - package-ecosystem: "github-actions"
+      directory: "/"
+      schedule:
+          interval: "weekly"
+    # Enable version updates for Docker
+    - package-ecosystem: "docker"
+      # Look for a `Dockerfile` in the `root` directory
+      directory: "/"
+      # Check for updates once a week
+      schedule:
+          interval: "daily"
