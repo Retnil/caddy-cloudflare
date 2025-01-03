@@ -31,8 +31,8 @@ jobs:
               if: success()
               id: prepare
               run: |
-                  echo ::set-output name=docker_platform::${DOCKER_TARGET_PLATFORM}
-                  echo "::set-output name=tag::$(git describe --tags --abbrev=0)"
+                  echo "DOCKER_PLATFORM=${DOCKER_TARGET_PLATFORM}" >> $GITHUB_ENV
+                  echo "TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
 
             - name: Login to GitHub Container Registry
               uses: docker/login-action@v3
@@ -48,5 +48,5 @@ jobs:
                   platforms: ${{ env.DOCKER_TARGET_PLATFORM }}
                   push: true
                   tags: |
-                      ghcr.io/${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_CONTAINER_NAME }}:${{ steps.prepare.outputs.tag }}
+                      ghcr.io/${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_CONTAINER_NAME }}:${{ env.TAG }}
                       ghcr.io/${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_CONTAINER_NAME }}:latest
