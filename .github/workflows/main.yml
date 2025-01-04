@@ -32,13 +32,12 @@ jobs:
               id: prepare
               run: |
                   TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "latest")
-                  echo "TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+                  echo "TAG=${TAG}" >> $GITHUB_ENV
                   echo "DOCKER_PLATFORM=${DOCKER_TARGET_PLATFORM}" >> $GITHUB_ENV
 
             - name: Use Tag Variable
               run: echo "The Docker image tag is ${{ env.TAG }}"
 
- 
             - name: Login to GitHub Container Registry
               uses: docker/login-action@v3
               with:
